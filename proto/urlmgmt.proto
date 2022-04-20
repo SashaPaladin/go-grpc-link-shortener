@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = ".";
+
+service UrlManagement {
+  rpc Create (OriginalUrl) returns (ShortUrl) {}
+  rpc Get (ShortUrl) returns (OriginalUrl) {}
+}
+
+message OriginalUrl {
+  string url = 1;
+}
+
+message ShortUrl {
+  string url = 1;
+}
