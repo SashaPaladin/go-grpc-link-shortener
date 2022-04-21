@@ -2,15 +2,20 @@ syntax = "proto3";
 
 option go_package = ".";
 
+// Сервис, предоставляет API по созданию сокращенных ссылок
 service UrlManagement {
+  // Метод Create, который сохраняет оригинальный URL в базе и возвращает сокращённый URL
   rpc Create (OriginalUrl) returns (ShortUrl) {}
+  // Метод Get, который принимает сокращённый URL и возвращать оригинальный URL
   rpc Get (ShortUrl) returns (OriginalUrl) {}
 }
 
+// Оригинальный URL, принимаемый методом Create
 message OriginalUrl {
   string url = 1;
 }
 
+// Сокращенный URL, принимаемый методом GET
 message ShortUrl {
   string url = 1;
 }
