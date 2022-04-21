@@ -1,4 +1,4 @@
-package model
+package go_grpc_link_shortener
 
 import (
 	_ "github.com/lib/pq"

@@ -1,4 +1,4 @@
-package repo
+package repository
 
 type Repository interface {
 	CreateNewLink(OriginalUrl string, ShortUrl string) error

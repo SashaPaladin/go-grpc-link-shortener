@@ -1,6 +1,8 @@
-package repo
+package repository
 
-import "errors"
+import (
+	"errors"
+)
 
 type inmemoryRepo struct {
 	dbOrig  map[string]string
