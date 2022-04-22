@@ -14,7 +14,7 @@ import (
 
 func main() {
 	if err := initConfig(); err != nil {
-		log.Fatalf("error initializing configs: %s", err.Error())
+		log.Fatalf("faliled to initialize configs: %s", err)
 	}
 
 	servCfg := server.Config{
@@ -27,7 +27,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 
-	flagPtr := flag.String("db", "postgres", "a string")
+	flagPtr := flag.String("db", "", "a string")
 	flag.Parse()
 
 	var s *server.UrlManagementServer
@@ -48,6 +48,8 @@ func main() {
 		s = &server.UrlManagementServer{R: db, Cfg: servCfg}
 	case "inmemory":
 		s = &server.UrlManagementServer{R: repository.InmemoryDbCreate(), Cfg: servCfg}
+	default:
+		log.Fatalf("faliled to initialize server: Enter flag -db=postgres or -db=inmemory")
 	}
 
 	grpcServer := grpc.NewServer()

@@ -29,7 +29,7 @@ func (i inmemoryRepo) FindOriginalUrl(shortUrl string) (string, error) {
 	if ok {
 		return res, nil
 	}
-	return "", errors.New("FindOriginUrlError")
+	return "", errors.New("sql: no rows in result set")
 }
 
 func (i inmemoryRepo) FindShortUrl(originalUrl string) (string, error) {
@@ -37,5 +37,5 @@ func (i inmemoryRepo) FindShortUrl(originalUrl string) (string, error) {
 	if ok {
 		return res, nil
 	}
-	return "", errors.New("FindShortUrlError")
+	return "", errors.New("sql: no rows in result set")
 }
